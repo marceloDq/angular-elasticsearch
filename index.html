@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="ElasticSearchApp">
+<head>
+  <title>ElasticSearch</title>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/elasticsearch-browser/elasticsearch.angular.min.js"></script>
+
+  <!-- App -->
+  <script src="app.js"></script>
+
+  <!-- Services -->
+  <script src="app/common/services/elasticSearchService.js"></script>
+
+  <!-- Controllers -->
+  <script src="app/base/elasticSearchController.js"></script>
+</head>
+
+<body ng-controller="ElasticSearchController">
+
+  <div class="container">
+    <h1>ElasticSearch</h1>
+
+    <div ng-if="error" class="alert alert-danger" role="alert">{{error.message}}</div>
+
+    <div ng-if="clusterState" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Cluster State</h3>
+      </div>
+      <div class="panel-body">
+        <pre>{{clusterState | json}}</pre>
+      </div>
+    </div>
+
+    <form ng-submit="search()">
+        <label>
+            Search: <input type="text" ng-model="search.queryTerm" ng-change="autoComplete()"/>
+        </label>
+    </form>
+
+    <h3>Autcomplete:</h3>
+    <span>Results will be displayed when start typing.</span>
+    <ul>
+        <li ng-hide="autoCompleteResults.length">
+            No results found
+        </li>
+        <li ng-repeat="result in autoCompleteResults">
+            {{result._source.firstname}} {{result._source.lastname}}
+        </li>
+    </ul>
+
+    <h3>Search:</h3>
+    <span>Hit enter to see results.</span>
+    <ul>
+        <li ng-hide="results.length">
+            No results found
+        </li>
+        <li ng-repeat="result in results">
+            {{result._source.firstname}} {{result._source.lastname}}
+        </li>
+    </ul>
+
+  </div>
+</body>
+</html>
