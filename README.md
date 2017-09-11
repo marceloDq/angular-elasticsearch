@@ -17,17 +17,17 @@ http.cors:
   allow-origin: /https?:\/\/localhost(:[0-9]+)?/
 ```
 
-## To run the example:
-1. Clone this repo locally (or just [download](https://github.com/spalger/elasticsearch-angular-example/archive/master.zip) and unzip it)
+## Run:
+1. Clone this repo locally.
 
   ```sh
-  git clone https://github.com/spenceralger/elasticsearch-angular-example.git
+  git clone https://github.com/marceloDq/elasticsearch-angular.git
   ```
 
 2. Move into the project
 
   ```sh
-  cd elasticsearch-angular-example
+  cd elasticsearch-angular
   ```
 
 3. Install the node modules
