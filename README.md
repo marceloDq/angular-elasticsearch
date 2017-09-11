@@ -1,6 +1,7 @@
-# Angular + Elasticsearch Example
+# Angular/Elasticsearch
 
-This is an example project designed to show how you can use elasticsearch.js with angular.
+Example project to use angular with elasticsearch, the idea is to put several types of searches as an example.
+Inspirational design [spalger/elasticsearch-angular-example](https://github.com/spalger/elasticsearch-angular-example)
 
 ## Prerequisites
 
@@ -37,4 +38,3 @@ http.cors:
 
 4. Open the index.html file in your browser.
 
-5. Check out the source for [index.html](https://github.com/spenceralger/elasticsearch-angular-example/blob/master/index.html) to see how it works.
