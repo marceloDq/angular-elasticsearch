@@ -62,25 +62,29 @@
             });
         };
 
-        client.cluster.state({
-            metric: [
-                'cluster_name',
-                'nodes',
-                'master_node',
-                'version'
-            ]
-        }).then(function (resp) {
-            $scope.clusterState = resp;
-            $scope.error = null;
-        }).catch(function (err) {
-            $scope.clusterState = null;
-            $scope.error = err;
+        $scope.state = function () {
+            client.cluster.state({
+                metric: [
+                    'cluster_name',
+                    'nodes',
+                    'master_node',
+                    'version'
+                ]
+            }).then(function (resp) {
+                $scope.clusterState = resp;
+                $scope.error = null;
+            }).catch(function (err) {
+                $scope.clusterState = null;
+                $scope.error = err;
 
-            if (err instanceof esFactory.errors.NoConnections) {
-                $scope.error = new Error('Unable to connect to elasticsearch. ' +
-                'Make sure that it is running and listening at http://localhost:9200');
-            }
-        });
+                if (err instanceof esFactory.errors.NoConnections) {
+                    $scope.error = new Error('Unable to connect to elasticsearch. ' +
+                    'Make sure that it is running and listening at http://localhost:9200');
+                }
+            });
+        };
+
+        $scope.state();
 
     }]);
 
